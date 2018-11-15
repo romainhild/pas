@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-int NCONTAINERS = 3200;
+int NCONTAINERS = 4500;
 
 class Clients
 {
@@ -119,6 +119,7 @@ class Port
 public:
     Port() {};
     static Port generateCurrentPAS();
+    static Port generateRomain();
     void setBays(std::vector<bay_ptrtype> const& bays) { M_bays = bays; }
     void setBlocks(std::vector<block_ptrtype> const& blocks) { M_blocks = blocks; }
     double cost() const;
@@ -175,7 +176,6 @@ int Bay::nbLocationsWeightedIn() const
 
 Port Port::generateCurrentPAS()
 {
-    
     auto p = Port();
     std::vector<bay_ptrtype> bays;
     bays.push_back(std::make_shared<Bay>(464,208));
@@ -253,6 +253,115 @@ Port Port::generateCurrentPAS()
     return p;
 }
 
+Port Port::generateRomain()
+{
+    auto p = Port();
+    std::vector<bay_ptrtype> bays;
+    bays.push_back(std::make_shared<Bay>(96,328));
+    bays.push_back(std::make_shared<Bay>(0,328));
+    bays.push_back(std::make_shared<Bay>(452,876));
+    bays.push_back(std::make_shared<Bay>(456,568));
+    bays.push_back(std::make_shared<Bay>(540,788));
+    bays.push_back(std::make_shared<Bay>(540,788));
+    bays.push_back(std::make_shared<Bay>(264,160));
+    bays.push_back(std::make_shared<Bay>(264,160));
+    bays.push_back(std::make_shared<Bay>(620,708));
+    bays.push_back(std::make_shared<Bay>(712,448));
+    bays.push_back(std::make_shared<Bay>(700,628));
+    bays.push_back(std::make_shared<Bay>(424,0));
+    bays.push_back(std::make_shared<Bay>(424,0));
+
+    std::vector<block_ptrtype> blocks;
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("A1",i,15,bays[0],bays[6]));
+        bays[0]->addBlockIn(blocks.back());
+        bays[6]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 6; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("A2",i,5,bays[0],bays[3]));
+        bays[0]->addBlockIn(blocks.back());
+        bays[3]->addBlockOutFront(blocks.back());
+    }
+    for(int i = 0; i < 6; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("A3",i,4,bays[3],bays[6]));
+        bays[3]->addBlockInFront(blocks.back());
+        bays[6]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 15; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("B1",i,15,bays[1],bays[7]));
+        bays[1]->addBlockIn(blocks.back());
+        bays[7]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("B2",i,5,bays[1],bays[4]));
+        bays[1]->addBlockIn(blocks.back());
+        bays[4]->addBlockOutFront(blocks.back());
+    }
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("B3",i,4,bays[4],bays[7]));
+        bays[4]->addBlockInFront(blocks.back());
+        bays[7]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 25; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("C1",i,5,bays[2],bays[5]));
+        bays[2]->addBlockIn(blocks.back());
+        bays[5]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 25; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("C2",i,4,bays[5],bays[8]));
+        bays[5]->addBlockIn(blocks.back());
+        bays[8]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("D1",i,14,bays[6],bays[11]));
+        bays[6]->addBlockIn(blocks.back());
+        bays[11]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 6; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("D2",i,4,bays[6],bays[9]));
+        bays[6]->addBlockIn(blocks.back());
+        bays[9]->addBlockOutFront(blocks.back());
+    }
+    for(int i = 0; i < 6; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("D3",i,4,bays[9],bays[11]));
+        bays[9]->addBlockInFront(blocks.back());
+        bays[11]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 15; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("E1",i,14,bays[7],bays[12]));
+        bays[7]->addBlockIn(blocks.back());
+        bays[12]->addBlockOut(blocks.back());
+    }
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("E2",i,4,bays[7],bays[10]));
+        bays[7]->addBlockIn(blocks.back());
+        bays[10]->addBlockOutFront(blocks.back());
+    }
+    for(int i = 0; i < 10; ++i)
+    {
+        blocks.push_back(std::make_shared<Block>("E3",i,4,bays[10],bays[12]));
+        bays[10]->addBlockInFront(blocks.back());
+        bays[12]->addBlockOut(blocks.back());
+    }
+
+    p.setBays(bays);
+    p.setBlocks(blocks);
+    return p;
+}
+
 int Port::nbLocations() const
 {
     int nb = 0;
@@ -304,7 +413,14 @@ double Port::cost() const
 int main(int argc, char** argv)
 {
     auto clients = Clients("clientlist.csv");
-    auto p = Port::generateCurrentPAS();
+    Port p;
+    if( argc == 1 || atoi(argv[1]) == 1)
+        p = Port::generateCurrentPAS();
+    else if( atoi(argv[1]) == 2 )
+        p = Port::generateRomain();
+    else
+        p = Port::generateCurrentPAS();
+    // auto p = Port::generateCurrentPAS();
     // p.setWeight({{100,80,60,40,34,34,34,34,34,34,12,12,12,12,12,12,12,12,12,12}},{{0.15,0.12,0.11,0.1,0.05,0.05,0.05,0.05,0.05,0.05,0.022,0.022,0.022,0.022,0.022,0.022,0.022,0.022,0.022,0.022}});
     p.setWeight(clients.M_locations, clients.M_freq);
     auto c = p.cost();
