@@ -2,123 +2,41 @@
 
 \begin{frame}{\'Etat de l'art}
   \begin{itemize}
-  \item dynamique
+  \item dynamique \cite{rekik2015}
   \item aéroport \cite{gotteland2004}
   \item optimisation de forme/level set \cite{allaire2006}
-  \item combinatoire
+  \item combinatoire \cite{ndiaye2015}
   \item heuristique
   \item génétique
   \item Kim Kim \cite{kim98}
   \item Jacquenot \cite{jacquenot2010}
   \end{itemize}
+  \vfill
+  L'objectif est de minimiser la fonction coût en fonction de la géométrie et de la configuration.
+  \vfill
+  L'idéal serait de pouvoir générer des géométries et des configurations, puis de comparer les différentes valeurs des fonctions coût. 
+  \vfill  
 \end{frame}
 
 \begin{frame}{Hypothèses}
+  \begin{itemize}
+  \item On se concentre seulement sur le cas des conteneurs vides
+    \vfill
+  \item On ne considére que le nouveau portique
+    \vfill
+  \item On se concentre seulement sur la zone entre les camions et le nouveau portique
+    \vfill
+  \item On ne considère que les itinéraires bateau-stockage-camion
+    \vfill
+  \item Les conteneurs sont stockés par blocs de hauteur 5
+    \vfill
+  \item Ils sont déchargés dans une travée par une allée et sont chargés par l'allée à l'autre bout de la travée
+    \vfill
+  \end{itemize}
+  \vfill
 \end{frame}
 
 \begin{frame}{Fonction de coût}
-\end{frame}
-
-\begin{frame}{Poids des clients}
-\end{frame} 
-
-\begin{frame}{Quelques termes techniques}
-  \vfill
-  \begin{itemize}
-  \item Travée, pile, bloc, allée, zone de chargement.
-    \vfill
-  \item Géométrie : répartition des emplacements sur le terminal.
-    \vfill
-  \item Client.
-    \vfill
-  \item Configuration : une répartition des conteneurs pour une géométrie fixée.
-  \end{itemize}
-  \vfill
-\end{frame}
-
-\begin{frame}{Hypothèses}
-  \begin{itemize}
-    \vfill
-  \item se restreindre aux conteneurs 20 pieds,
-    \vfill
-  \item effectuer une étude 2D,
-    \vfill
-  \item utiliser une seule zone de chargement.
-    \vfill
-  \end{itemize}
-  \vfill
-\end{frame}
-
-\begin{frame}{Idée}
-  \begin{center}
-    Minimiser la distance parcourue par un conteneur en fonction de la géométrie et de la configuration.
-  \end{center}
-\end{frame}
-
-\begin{frame}{Données statistiques}
-  Extraits à partir de données statistiques : 
-  \begin{itemize}
-    \vfill
-  \item $\mu_c$ : poids du client $c$,
-    \vfill
-  \item $V_{tot}$ : nombre total de conteneurs (4500 EVP),
-    \vfill
-  \item  $V_c$ : nombre "moyen" de conteneurs stoqués sur le port par le client $c$.
-  \end{itemize}
-  \vfill
-\end{frame}
-
-\begin{frame}{Contraintes sur la géométrie}
-  \vfill 
-  \begin{itemize}
-  \item $N_t$ : largeur de la travée $t$.
-  \end{itemize} 
-  \vfill
-  Contraintes : 
-  \vfill
-  \begin{itemize}
-  \item $1 \leq N_t \leq 15$,
-    \vfill
-  \item $\mathrm{Card}(N_t\vert N_t \geq  6) \leq  30$,
-    \vfill
-  \item la largeur d'une allée est supérieure à $15m$.
-    \vfill
-  \end{itemize}   
-  \vfill
-\end{frame}
-
-\begin{frame}{Géométrie et distances}
-  \vfill
-  \begin{itemize}
-  \item $d_t$ : distance associée à une travée $t$ pour une géométrie fixée.
-    \vfill
-  \item $d_{t,E1}$ : distance entre la travée $t$ et l'entrée $1$.
-    \vfill
-  \item $d_{t,E2}$ :  distance entre la travée $t$ et l'entrée $2$.
-    \vfill
-  \item $d_{t,z}$ :  distance entre la travée $t$ et la zone de chargement.
-  \end{itemize}
-  \vfill
-  $$d_t=\frac{2}{3}d_{t,E1}+\frac{1}{3}d_{t,E2}+d_{t,z}.$$
-  \vfill
-\end{frame}
-
-\begin{frame}{Configuration}
-  \begin{itemize}
-  \item  $x_{t,c}$ : nombre d'emplacements utilisés par le client dans la travée $t$.
-  \end{itemize} 
-  \vfill Contrainte : 
-  \vfill
-  \begin{itemize}
-  \item $x_{t,c}x_{t,c'}=0,\quad \forall t \quad \forall c\neq c'$ : un travée est utilisée par un seul client.
-  \end{itemize}
-  \vfill
-\end{frame}
-
-
-
-
-\begin{frame}{La fonction coût}
   \vfill
   \begin{itemize}
   \item  La fonction coût  : 
@@ -130,12 +48,76 @@
   \vfill
 \end{frame}
 
-\begin{frame}{Optimisation}
-  \vfill
+\begin{frame}{Poids des clients}
+  Extraits à partir de données statistiques : 
   \begin{itemize}
-  \item L'objectif est de minimiser la fonction coût en fonction de la géométrie et de la configuration.
     \vfill
-  \item  L'idéal serait de pouvoir générer des géométries et des configurations, puis de comparer les différentes valeurs des fonctions coût. 
+  \item $\mu_c$ : poids du client $c$,
+    \vfill
+  \item $V_{tot}$ : nombre total de conteneurs (4500 EVP),
+    \vfill
+  \item  $V_c$ : nombre "moyen" de conteneurs stoqués sur le port par le client $c$.
   \end{itemize}
-  \vfill  
-\end{frame}
+  \vfill
+\end{frame} 
+
+% \begin{frame}{Quelques termes techniques}
+%   \vfill
+%   \begin{itemize}
+%   \item Travée, pile, bloc, allée, zone de chargement.
+%     \vfill
+%   \item Géométrie : répartition des emplacements sur le terminal.
+%     \vfill
+%   \item Client.
+%     \vfill
+%   \item Configuration : une répartition des conteneurs pour une géométrie fixée.
+%   \end{itemize}
+%   \vfill
+% \end{frame}
+
+% \begin{frame}{Contraintes sur la géométrie}
+%   \vfill 
+%   \begin{itemize}
+%   \item $N_t$ : largeur de la travée $t$.
+%   \end{itemize} 
+%   \vfill
+%   Contraintes : 
+%   \vfill
+%   \begin{itemize}
+%   \item $1 \leq N_t \leq 15$,
+%     \vfill
+%   \item $\mathrm{Card}(N_t\vert N_t \geq  6) \leq  30$,
+%     \vfill
+%   \item la largeur d'une allée est supérieure à $15m$.
+%     \vfill
+%   \end{itemize}   
+%   \vfill
+% \end{frame}
+
+% \begin{frame}{Géométrie et distances}
+%   \vfill
+%   \begin{itemize}
+%   \item $d_t$ : distance associée à une travée $t$ pour une géométrie fixée.
+%     \vfill
+%   \item $d_{t,E1}$ : distance entre la travée $t$ et l'entrée $1$.
+%     \vfill
+%   \item $d_{t,E2}$ :  distance entre la travée $t$ et l'entrée $2$.
+%     \vfill
+%   \item $d_{t,z}$ :  distance entre la travée $t$ et la zone de chargement.
+%   \end{itemize}
+%   \vfill
+%   $$d_t=\frac{2}{3}d_{t,E1}+\frac{1}{3}d_{t,E2}+d_{t,z}.$$
+%   \vfill
+% \end{frame}
+
+% \begin{frame}{Configuration}
+%   \begin{itemize}
+%   \item  $x_{t,c}$ : nombre d'emplacements utilisés par le client dans la travée $t$.
+%   \end{itemize} 
+%   \vfill Contrainte : 
+%   \vfill
+%   \begin{itemize}
+%   \item $x_{t,c}x_{t,c'}=0,\quad \forall t \quad \forall c\neq c'$ : un travée est utilisée par un seul client.
+%   \end{itemize}
+%   \vfill
+% \end{frame}
