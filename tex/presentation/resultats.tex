@@ -1,14 +1,49 @@
 \section{Résultats et perspectives}
 
 \begin{frame}{Coût de la configuration actuelle}
-% \begin{center}
   \includegraphics[width=\textwidth]{../images/Plan_Terminal.png}
-% \end{center}
+  \vfill
+  \begin{itemize}
+  \item conteneurs: capacité occupée/totale = 4500/4850
+  \item emplacements: capacité occupée/totale = 900/970
+  \item travées: capacité occupée/totale = 126/144
+  \end{itemize}
+  \vfill
+  \begin{center}
+    Coût = 762.45
+  \end{center}
 \end{frame}
 
 \begin{frame}{Coût d'une autre configuration}
   \input{portRomain}
+  \vfill
+  \begin{itemize}
+  \item conteneurs: capacité occupée/totale = 4865/6110
+  \item emplacements: capacité occupée/totale = 973/1222
+  \item travees: capacité occupée/totale = 108/164
+  \end{itemize}
+  \vfill
+  \begin{center}
+    {\color{green!50!black}Coût = 465.497}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Conclusion}
+  \uncover<1->{
+  \begin{exampleblock}{Conclusion}
+    \begin{itemize}
+    \item Définition d'une fonction de coût pour une configuration
+    \item Exemple de calcul du coût pour deux configurations
+    \item Liste d'algorithme de génération de configuration
+    \end{itemize}
+  \end{exampleblock}
+}
+\uncover<2->{
+  \begin{alertblock}{Perspectives}
+    \begin{itemize}
+    \item Relaxation hypothèses
+    \item Design algorithme de génération de configuration
+    \item Amélioration du calcul du poid par catégorie
+    \end{itemize}
+  \end{alertblock}}
 \end{frame}
