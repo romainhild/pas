@@ -19,15 +19,51 @@
   \vfill
 \end{frame}
 
-\begin{frame}{\'Etat de l'art}
+\begin{frame}{Génération de la configuration}
   \begin{itemize}
-  \item dynamique \cite{rekik2015}
-  \item génétique/aéroport \cite{gotteland2004}
-  \item optimisation de forme/level set \cite{allaire2006}
-  \item combinatoire \cite{moussi2012}
-  \item heuristique \cite{ndiaye2015}
-  \item Kim Kim \cite{kim98}
-  \item geometrical and functional layout optimization/Jacquenot \cite{jacquenot2010}
+  \item Dynamique \cite{rekik2015}:
+    \begin{itemize}
+    \item Prend en compte les événements aléatoire en temps-réel
+    \item On se place dans le cas statique où les événements sont déterminés
+    \end{itemize}
+    \vfill
+  \item Définition détaillée des coûts \cite{kim98}:
+    \begin{itemize}
+    \item Prend en compte les coûts fixes d'un emplacement, d'une grue/stacker
+    \item Prend en compte les coûts variables pour un remaniement,...
+    \end{itemize}
+    \vfill
+  \item Optimisation de forme \cite{allaire2006}:
+    \begin{itemize}
+    \item Essayer d'écrire le problème et les contraintes en un problème continu
+    \item Utilisation de level set
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Génération de la configuration}
+  \begin{itemize}
+  \item Génétique \cite{gotteland2004}:
+    \begin{itemize}
+    \item Configuration de départ, opérations admises et critère de décision
+    \item Gestion du parc d'avion dans un aéroport 
+    \end{itemize}
+    \vfill
+  \item Heuristique \cite{ndiaye2015}:
+    \begin{itemize}
+    \item Test de configurations possibles définies manuellement
+    \end{itemize}
+    \vfill
+  \item Combinatoire \cite{moussi2012}:
+    \begin{itemize}
+    \item Création d'une grille et remplissage conteneurs/allées
+    \item Test de toutes les configurations admissibles
+    \end{itemize}
+    \vfill
+  \item Geometrical and functional layout optimization \cite{jacquenot2010}:
+    \begin{itemize}
+    \item Algorithmes sur le placement d'objets
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
