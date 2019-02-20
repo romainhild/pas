@@ -76,7 +76,7 @@ public:
     int locationsWeighted() const { return M_weight == 0 ? 0 : M_locations; }
     double weight() const { return M_weight; }
     double distance() const;
-    double cost() const { return distance()*weight(); }
+    double cost() const { return distance()*M_weight*M_locations; }
 };
 
 class Bay
@@ -392,9 +392,10 @@ void Port::setWeight( std::vector<int> nbLocations, std::vector<double> weights)
     auto it = M_blocks.begin();
     for( int i = 0; i < nbLocations.size() && i < 50; ++i)
     {
+        int Xc = nbLocations[i];
         while( nbLocations[i] > 0 && it != M_blocks.end() )
         {
-            (*it)->setWeight(weights[i]);
+            (*it)->setWeight(weights[i]/Xc);
             nbLocations[i] -= (*it)->locations();
             std::advance(it,1);
         }
