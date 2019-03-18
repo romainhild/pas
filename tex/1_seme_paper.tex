@@ -175,7 +175,7 @@ Thus, the first heap to be emptied is the oldest in the block.
 
 \section{Problem presentation and some possible solutions}
 
-\textbf{Goal: find a configuration, which means find a distribution of positions on the storage area and an organization of customers in the defined areas, to minimize a cost function.} \\
+\textbf{Goal: find a configuration , which means find a distribution of positions on the storage area and an organization of customers in the defined areas, to minimize a cost function.} \\
 
 \noindent
 \textbf{Idea:} the representation of the height of the heaps has no impact in the problem because filling and emptying them is done automatically by bays that have the same container category (same dimensions and customer).
@@ -185,7 +185,7 @@ In other words, we have scaled down from a 3D problem where we had to consider t
 
 
 \noindent
-{\bf Issue: } draw the positions available in the harbor that can store $ 4500 $ TEU containers that belong to (\ls{???nb????}) customers in order to minimize a cost function.
+{\bf Issue: } draw the positions available in the harbor that can store $ 4500 $ TEU containers that belong to (???nb????) customers in order to minimize a cost function.
 
 
 \subsection{State of the art} 
@@ -309,9 +309,9 @@ Following the hypothesis proposed by the company, to be able to draw possible la
 \begin{itemize}
 	\item traffic lanes must be at least $15$ m wide;
 	\item the reach-stacker has to access a bay by its width to catch the container on the side;
-	\item every containers belongs to a client, whether $$\sum_ {c} V_c = V_ {tot}; $$
-	\item in each bay $ t $, there are no more positions used than the one available, whether $$0\le \sum_c x_{t,c} \le N_t;$$
-	\item containers of different client cannot be in the same bay $t$, whether \linebreak $$x_{t,c}*x_{t,c'}=0, \,\,\, \forall c \neq c'.$$
+	\item every containers belongs to a client, whether $$\sum_ {c} V_c = V_ {tot} $$;
+	\item in each bay $ t $, there are no more positions used than the one available, whether $$0\le \sum_c x_{t,c} \le N_t$$;
+	\item containers of different client cannot be in the same bay $t$, whether \linebreak $$x_{t,c}*x_{t,c'}=0, \,\,\, \forall c \neq c'$$.
 \end{itemize}
 
 \subsection{Study on different configurations} 
@@ -335,7 +335,7 @@ To define the weights $ \ mu_c $ associated to each customer frequency of moveme
 \begin{figure}[!htb]
 \centering
 \input{images/port_voca}
-\caption{Another possible configuration.}
+\caption{Another possible configuration/}
 \label{fig:2D_PAS_actuel} 
 \end{figure}
 
@@ -382,7 +382,7 @@ This algorithm consists in creating paths from a starting point (e.g. one of the
 			y_i + dy. \\
 			\end{array}\right.
 			\nonumber
-			\end{eqnarray}
+			\end{eqnarray};
 			 \item  loop with a snail shape around $(x_{i+1},y_{i+1})$ to define the aisle $a$ every pixel which distance from $(x_{i+1},y_{i+1})$ is fewer than $15$m; % $15+\sqrt{(dx^2+dy^2)}/2$m ($\sqrt{(dx^2+dy^2)}/2$ car la distance est calculée avec le centre de la maille alors que le reach-stacker ne doit pas taper dans les coins du conteneur), 
 			\item  update the number of container positions $\#e$.
 	\end{enumerate}
@@ -390,13 +390,13 @@ This algorithm consists in creating paths from a starting point (e.g. one of the
 \end{itemize}
 
 It may be interesting to constrain the algorithm to choose certain possibilities for the position $ (x_ {i + 1}, y_ {i + 1}) $ with a greater probability. 
-For example, in our case it seems logical to favor straight lines and avoid too many bends. 
-Thus, instead of choosing with the same probability each direction, the step \ref{next_position} can be adapted to prefer straight lines.
+For example, in our case it seems logical to favor a straight line and avoid too many bends. 
+Thus, instead of choosing with the same probability each direction, the step \ref{next_position} can be adapted to prefer the straight line.
 
 
 \section{Discussion on FIFO}
 One of the hypotheses that strongly constrains storage geometry is related to  the logic \textit{First In, First Out}. 
-Indeed, this fact implies that the stack-reacher has to access to the containers by the two sides of the bay, imposing that the optimization of the bay length is strongly influenced by the volume and the frequency of movements of each customer. 
+Indeed, this fact implies that the stack-reacher has to access to the containers by the two sides of the bay, imposing that the optimization of the bay length is strongly influenced by the to the volume and the frequency of movements of each customer. 
 The logic FIFO adopted by the \PAS is due to the fact that the client would like to access every time to the oldest container of each bay since the billing depends on how long each container is stored in the harbor. \\
 As alternative we propose the logic \textit{Last In, First Out} (LIFO), indeed this storage management would greatly reduce the areas allocated to the traffic aisles and would make it possible to pick up the containers that require the least total distance (from the harbor to the truck loading area). 
 This alternative idea raised during the week would be integrated with the previous billing strategy, namely we suggest a FIFO invoicing management coupled with a LIFO logic for the storage.
@@ -405,10 +405,6 @@ This alternative idea raised during the week would be integrated with the previo
 \section{Conclusion}
 
 \ls{write conclusions}
-
-The problematic introduced by the \PAS has been formulated and simplified into a surface problem consisting in drawing the ground positions where the empty containers would be stored. During the few days of work of this SEME 2018 (Semaines d'\'Etude Mathématiques-Entreprises) in Strasbourg, we have found links with different topics which could help in solving this problem (shape optimization, or problem of distribution of 2D objects on a surface). Due to lack of time, we focused on the implementation of a code computing a cost function (which has been defined to depends on the need of each client) for a given configuration. It allowed us to compare the actual configuration with an other one that we created. This implementation is efficient to compare different configurations but it does not propose new ones. An algorithm of automatic generation of configurations has also been introduced. Coupled with the cost function, it could give new shapes for an appropriate storage.\\
-
-We were surprised that must of this problematic results from the \textit{First In, First Out} storage logic. Indeed, it implies strong constraints on the access of each container. One idea of this week of work is to study closely if it is really necessary to follow this storage logic.
 
 %%%%%%%%%
 
